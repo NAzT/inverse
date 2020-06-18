@@ -20,28 +20,28 @@ def environment_info(env):
 	print()
 
 
-def basic_guessing_policy(env, agent):
-	''' Execute random guessing policy. '''
-	totals = []
-	for episode in range(500):
-		episode_rewards = 0
-		obs = env.reset()
-		# env.render()
-		for step in range(1000):  # 1000 steps max unless failure
-			action = agent.act(obs)
-			obs, reward, done, info = env.step(action)
-			episode_rewards += reward
-			# env.render()
-			if done:
-				# Terminal state reached, reset environment
-				break
-		totals.append(episode_rewards)
-
-	print('************** Reward Statistics **************')
-	print('Average: {}'.format(np.mean(totals)))
-	print('Standard Deviation: {}'.format(np.std(totals)))
-	print('Minimum: {}'.format(np.min(totals)))
-	print('Maximum: {}'.format(np.max(totals)))
+# def basic_guessing_policy(env, agent):
+# 	''' Execute random guessing policy. '''
+# 	totals = []
+# 	for episode in range(500):
+# 		episode_rewards = 0
+# 		obs = env.reset()
+# 		# env.render()
+# 		for step in range(1000):  # 1000 steps max unless failure
+# 			action = agent.act(obs)
+# 			obs, reward, done, info = env.step(action)
+# 			episode_rewards += reward
+# 			# env.render()
+# 			if done:
+# 				# Terminal state reached, reset environment
+# 				break
+# 		totals.append(episode_rewards)
+#
+# 	print('************** Reward Statistics **************')
+# 	print('Average: {}'.format(np.mean(totals)))
+# 	print('Standard Deviation: {}'.format(np.std(totals)))
+# 	print('Minimum: {}'.format(np.min(totals)))
+# 	print('Maximum: {}'.format(np.max(totals)))
 
 
 # observation = env.reset()
@@ -86,15 +86,16 @@ environment_info(env)
 
 start_time = time.time()  # start time of the loop
 totals = []
-for episode in range(5000):
+for episode in range(500):
 	episode_rewards = 0
 	obs = env.reset()
-	for step in range(10000):  # 1000 steps max
+	for step in range(1000):  # 1000 steps max
 		env.render()
 		# action = agent.
 		if time.time() - start_time > .02:
-			action = env.action_space.sample()  # your agent here (this takes random actions)
+			# action = env.action_space.sample()  # your agent here (this takes random actions)
 			# env.step(action)
+			action = agent.act()
 			obs, reward, done, info = env.step(action)
 			episode_rewards += reward
 			env.episode(episode, step, episode_rewards)
