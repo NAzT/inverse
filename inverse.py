@@ -31,7 +31,7 @@ step = ""
 
 
 
-device = '/dev/tty.usbserial-14410'
+device = '/dev/tty.usbserial-14210'
 baud = 115200
 
 if not device:
